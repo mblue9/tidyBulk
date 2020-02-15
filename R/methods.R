@@ -13,6 +13,10 @@ setOldClass("ttBulk")
 #' @importFrom rlang enquo
 #' @importFrom magrittr "%>%"
 #'
+#' @importFrom SummarizedExperiment assays
+#' @importFrom SummarizedExperiment rowData
+#' @importFrom SummarizedExperiment colData
+#'
 #' @name ttBulk
 #'
 #' @param .data A `tbl` formatted as | <SAMPLE> | <TRANSCRIPT> | <COUNT> | <...> |

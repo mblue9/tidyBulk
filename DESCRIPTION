@@ -23,6 +23,7 @@ Imports:
     preprocessCore,
     stats,
     parallel,
+    SummarizedExperiment,
     utils
 Suggests:
     testthat,
@@ -43,7 +44,6 @@ Suggests:
     KernSmooth,
     Rtsne,
     EGSEA,
-    SummarizedExperiment,
     S4Vectors,
     ggplot2,
     widyr
