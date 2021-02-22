@@ -154,7 +154,7 @@ jobs:
 
       - name: Set BiocVersion
         run: |
-          options(repos = c(CRAN = 'https://cran.r-project.org'))
+          options(repos = c(CRAN = https("cloud.r-project.org")))
           BiocManager::install(version = "${{ matrix.config.bioc }}", ask = FALSE)
         shell: Rscript {0}
 
@@ -168,12 +168,12 @@ jobs:
           ## Ideally, all dependencies should get installed in the first pass.
           
           ## To fix preprocessCore error https://github.com/stemangiola/tidybulk/issues/145
-          options(repos = c(CRAN = 'https://cran.r-project.org'))
+          options(repos = c(CRAN = https("cloud.r-project.org")))
           BiocManager::install("preprocessCore", configure.args="--disable-threading")
 
           ## Pass #1 at installing dependencies
           message(paste('****', Sys.time(), 'pass number 1 at installing dependencies: local dependencies ****'))
-          options(repos = c(CRAN = 'https://cran.r-project.org'))
+          options(repos = c(CRAN = https("cloud.r-project.org")))
           remotes::install_local(dependencies = TRUE, repos = BiocManager::repositories(), build_vignettes = TRUE, upgrade = TRUE)
         continue-on-error: true
         shell: Rscript {0}
@@ -186,7 +186,7 @@ jobs:
           
           ## For running the checks
           message(paste('****', Sys.time(), 'installing rcmdcheck and BiocCheck ****'))
-          options(repos = c(CRAN = 'https://cran.r-project.org'))
+          options(repos = c(CRAN = https("cloud.r-project.org")))
           remotes::install_cran("rcmdcheck")
           BiocManager::install("BiocCheck")
         shell: Rscript {0}
@@ -195,7 +195,7 @@ jobs:
         if:  env.has_RUnit == 'true'
         run: |
           ## Install BiocGenerics
-          options(repos = c(CRAN = 'https://cran.r-project.org'))
+          options(repos = c(CRAN = https("cloud.r-project.org")))
           BiocManager::install("BiocGenerics")
         shell: Rscript {0}
 
